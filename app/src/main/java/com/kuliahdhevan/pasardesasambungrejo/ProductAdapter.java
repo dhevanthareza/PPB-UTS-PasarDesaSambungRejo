@@ -41,7 +41,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         return mFoodsData.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ViewHolder extends RecyclerView.ViewHolder {
         private TextView mNameText;
         private TextView mPriceText;
         private ImageView mFoodImage;
@@ -51,20 +51,20 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             mNameText = (TextView)itemView.findViewById(R.id.name);
             mPriceText = (TextView)itemView.findViewById(R.id.price);
             mFoodImage = itemView.findViewById(R.id.foodImage);
-            itemView.setOnClickListener(this);
+            mFoodImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Product currentFood = mFoodsData.get(getAdapterPosition());
+                    price += currentFood.getPrice();
+                    mTotalPriceText.get().setText("TOTAL = " + String.valueOf(price));
+                }
+            });
         }
 
         void bindTo(Product currentFood){
             mNameText.setText(currentFood.getName());
             mPriceText.setText(String.valueOf(currentFood.getPrice()));
             Glide.with(mContext).load(currentFood.getImageResource()).into(mFoodImage);
-        }
-
-        @Override
-        public void onClick(View view) {
-            Product currentFood = mFoodsData.get(getAdapterPosition());
-            price += currentFood.getPrice();
-            mTotalPriceText.get().setText("TOTAL = " + String.valueOf(price));
         }
     }
 }
