@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -59,9 +60,22 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
+            case R.id.callCenter:
+                this.goToCallCenter();
+                return true;
+            case R.id.smsCenter:
+                this.goToSmsCenter();
+                return true;
+            case R.id.map:
+                this.openMap();
+                return true;
             case R.id.logout:
                 this.logout();
                 return true;
+            case R.id.updateUser:
+                this.goToUpdateUser();
+                return true;
+
             default:
                 return true;
         }
@@ -74,6 +88,30 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
         this.finish();
+    }
+
+    public void goToCallCenter() {
+        Intent intent = new Intent(this, CallCenterActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToSmsCenter() {
+        Intent intent = new Intent(this, SmsCenterActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToUpdateUser() {
+        Intent intent = new Intent(this, UpdateUserActivity.class);
+        startActivity(intent);
+    }
+
+    public void openMap() {
+        Uri gmmIntentUri = Uri.parse("geo:-6.982866,110.4069027");
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        if (mapIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(mapIntent);
+        }
     }
 
     public void goToPurchaseDetail(View view) {

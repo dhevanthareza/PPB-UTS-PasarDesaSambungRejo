@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/callCenter"
         android:title="Call Center" />
     <item
+        android:id="@+id/smsCenter"
         android:title="SMS Center" />
     <item
+        android:id="@+id/map"
         android:title="Lokasi Maps" />
     <item
+        android:id="@+id/updateUser"
         android:title="Update User dan Password" />
     <item
         android:id="@+id/logout"
