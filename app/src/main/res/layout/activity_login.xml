@@ -70,7 +70,7 @@
         android:onClick="login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtPassword"
-        app:srcCompat="@drawable/ic_arrow_forward_white" />
+        app:srcCompat="@drawable/ic_arrow_forward" />
 
     <TextView
         android:id="@+id/textView11"
