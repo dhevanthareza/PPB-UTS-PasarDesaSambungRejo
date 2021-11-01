@@ -75,4 +75,9 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
         this.finish();
     }
+
+    public void goToPurchaseDetail(View view) {
+        Intent intent = new Intent(this, PurchaseDetailActivity.class);
+        startActivity(intent);
+    }
 }
