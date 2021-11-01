@@ -8,4 +8,8 @@
         android:title="Lokasi Maps" />
     <item
         android:title="Update User dan Password" />
+    <item
+        android:id="@+id/logout"
+        android:title="LOGOUT" />
+
 </menu>

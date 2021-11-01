@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -18,6 +20,9 @@ public class HomeActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private ArrayList<Product> mProductsData;
     private ProductAdapter mAdapter;
+    private SharedPreferences mPreferences;
+    private String sharedPrefFile =
+            "com.kuliahdhevan.pasardesasambungrejo";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +32,7 @@ public class HomeActivity extends AppCompatActivity {
         mProductsData = new ArrayList<>();
         mAdapter = new ProductAdapter(this, mProductsData, findViewById(R.id.totalPrice));
         mRecyclerView.setAdapter(mAdapter);
+        mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
         initializeData();
     }
 
@@ -43,17 +49,30 @@ public class HomeActivity extends AppCompatActivity {
         mAdapter.notifyDataSetChanged();
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 
-//    public void logout(View view) {
-//        SharedPreferences.Editor preferencesEditor = mPreferences.edit();
-//        preferencesEditor.putString("LOGIN_USERNAME", "false");
-//        preferencesEditor.apply();
-//    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.logout:
+                this.logout();
+                return true;
+            default:
+                return true;
+        }
+    }
+
+    public void logout() {
+        SharedPreferences.Editor preferencesEditor = mPreferences.edit();
+        preferencesEditor.putString("LOGIN_USERNAME", "false");
+        preferencesEditor.apply();
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
+        this.finish();
+    }
 }

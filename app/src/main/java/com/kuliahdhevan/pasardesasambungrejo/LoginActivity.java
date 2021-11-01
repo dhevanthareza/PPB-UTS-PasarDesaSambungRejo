@@ -15,7 +15,6 @@ public class LoginActivity extends AppCompatActivity {
     private String sharedPrefFile =
             "com.kuliahdhevan.pasardesasambungrejo";
     EditText edtPassword, edtUsername, edtFullname;
-    Button btnLogin, btnRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +22,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         edtPassword = findViewById(R.id.edtPassword);
         edtUsername = findViewById(R.id.edtUsername);
-        btnLogin = findViewById(R.id.btnGoLogin);
-        btnRegister = findViewById(R.id.btnRegister);
         mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
+        getSupportActionBar().hide();
     }
 
     public void login(View view) {

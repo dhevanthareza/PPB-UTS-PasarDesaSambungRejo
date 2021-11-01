@@ -14,7 +14,6 @@ public class RegisterActivity extends AppCompatActivity {
     private String sharedPrefFile =
             "com.kuliahdhevan.pasardesasambungrejo";
     EditText edtPassword, edtUsername, edtFullname;
-    Button btnLogin, btnRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +22,8 @@ public class RegisterActivity extends AppCompatActivity {
         edtPassword = findViewById(R.id.edtPassword);
         edtUsername = findViewById(R.id.edtUsername);
         edtFullname = findViewById(R.id.edtFullname);
-        btnLogin = findViewById(R.id.btnGoLogin);
-        btnRegister = findViewById(R.id.btnRegister);
         mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
+        getSupportActionBar().hide();
     }
 
     public void submitRegister(View view) {
