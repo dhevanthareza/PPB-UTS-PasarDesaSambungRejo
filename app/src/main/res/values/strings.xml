@@ -11,6 +11,16 @@
         <item>Ayam Serundeng</item>
     </string-array>
 
+    <string-array name="foods_description">
+        <item>Ayam yang diungkep dengan kecap yang sudah dicampur dengan sambal pedas, memiliki perpaduan rasa daging ayam yang manis dan pedas</item>
+        <item>Bukan sekedar ayam goreng biasa. Tambahan mentega membuat rasanya gurih-gurih enak bercampur dengan kecap yang manis. Harum bawang putih dan bombay membuatnya makin enak saat dimakan dengan nasi putih hangat siang ini.</item>
+        <item>Ayam goreng yang ditumis dengan bawang putih dan bumbu bumbu lain sebagai penyedap</item>
+        <item>Ayam goreng yang ditumis dengan bawang putih, bombai, saus tiram, saus teriyaki dan bubuk merica</item>
+        <item>Ayam goreng dengan bumbu khas padang seperti kunyit, daun salam dan daun jeruk</item>
+        <item>Ayam bakar yang diolesi madu sebelum dibakar</item>
+        <item>Ayam goren dengan taburan serundeng</item>
+    </string-array>
+
     <string-array name="foods_price">
         <item>10000</item>
         <item>20000</item>

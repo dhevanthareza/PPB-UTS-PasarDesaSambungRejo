@@ -39,12 +39,13 @@ public class HomeActivity extends AppCompatActivity {
 
     private void initializeData() {
         String[] foodsName = getResources().getStringArray(R.array.foods_name);
+        String[] foodsDescription = getResources().getStringArray(R.array.foods_description);
         String[] foodsPrice = getResources().getStringArray(R.array.foods_price);
         TypedArray foodImagesResources =
                 getResources().obtainTypedArray(R.array.foods_images);
         mProductsData.clear();
         for(int i=0;i<foodsName.length;i++){
-            mProductsData.add(new Product(foodsName[i], Integer.parseInt(foodsPrice[i]), foodImagesResources.getResourceId(i, 0)));
+            mProductsData.add(new Product(foodsName[i], foodsDescription[i], Integer.parseInt(foodsPrice[i]), foodImagesResources.getResourceId(i, 0)));
         }
         foodImagesResources.recycle();
         mAdapter.notifyDataSetChanged();

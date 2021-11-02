@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PasarDesaSambungrejo">
         <activity
+            android:name=".ProductDetailAActivity"
+            android:exported="true" />
+        <activity
             android:name=".SmsCenterActivity"
             android:exported="true" />
         <activity

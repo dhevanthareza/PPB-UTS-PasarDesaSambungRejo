@@ -1,6 +1,7 @@
 package com.kuliahdhevan.pasardesasambungrejo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +58,17 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                     Product currentFood = mFoodsData.get(getAdapterPosition());
                     price += currentFood.getPrice();
                     mTotalPriceText.get().setText("TOTAL = " + String.valueOf(price));
+                }
+            });
+            mNameText.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Product currentFood = mFoodsData.get(getAdapterPosition());
+                    Intent intent = new Intent(mContext, ProductDetailAActivity.class);
+                    intent.putExtra("productName", currentFood.getName());
+                    intent.putExtra("productDescription", currentFood.getDescription());
+                    intent.putExtra("productImage", currentFood.getImageResource());
+                    mContext.startActivity(intent);
                 }
             });
         }
