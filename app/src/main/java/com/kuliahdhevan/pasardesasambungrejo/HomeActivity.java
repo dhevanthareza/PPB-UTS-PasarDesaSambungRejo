@@ -116,7 +116,10 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void goToPurchaseDetail(View view) {
+        TextView purchaseAmountTv = findViewById(R.id.totalPrice);
+        String purchaseAmount = purchaseAmountTv.getText().toString().split("=")[1].trim();
         Intent intent = new Intent(this, PurchaseDetailActivity.class);
+        intent.putExtra("purchaseAmount", purchaseAmount);
         startActivity(intent);
     }
 }
