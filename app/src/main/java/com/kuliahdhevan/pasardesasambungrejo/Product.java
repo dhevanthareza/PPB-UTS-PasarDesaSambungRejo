@@ -13,8 +13,8 @@ public class Product {
         this.imageResource = imageResource;
     }
 
-    String getName() { return name; }
-    int getPrice() { return price; }
-    int getImageResource() { return imageResource; }
-    String getDescription() { return description; }
+    public String getName() { return name; }
+    public int getPrice() { return price; }
+    public int getImageResource() { return imageResource; }
+    public String getDescription() { return description; }
 }

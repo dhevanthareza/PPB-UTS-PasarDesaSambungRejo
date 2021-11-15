@@ -14,7 +14,7 @@ public class LoginActivity extends AppCompatActivity {
     private SharedPreferences mPreferences;
     private String sharedPrefFile =
             "com.kuliahdhevan.pasardesasambungrejo";
-    EditText edtPassword, edtUsername, edtFullname;
+    private EditText edtPassword, edtUsername, edtFullname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

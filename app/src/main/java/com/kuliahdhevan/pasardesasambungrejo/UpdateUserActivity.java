@@ -25,7 +25,7 @@ public class UpdateUserActivity extends AppCompatActivity {
         getSupportActionBar().hide();
     }
 
-    public void submitRegister(View view) {
+    public void saveUser(View view) {
         SharedPreferences.Editor preferencesEditor = mPreferences.edit();
         preferencesEditor.putString("FULLNAME", edtFullname.getText().toString());
         preferencesEditor.putString("USERNAME", edtUsername.getText().toString());
