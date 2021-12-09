@@ -1,5 +1,6 @@
 package com.kuliahdhevan.pasardesasambungrejo;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,7 +44,11 @@ public class HomeActivity extends AppCompatActivity {
         this.fillInitialData();
         initializeData();
     }
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        this.initializeData();
+    }
     public void fillInitialData() {
         String[] foodsName = getResources().getStringArray(R.array.foods_name);
         String[] foodsDescription = getResources().getStringArray(R.array.foods_description);
@@ -58,7 +63,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void initializeData() {
         List<Product> products = db.getAllProduct();
-        int i=0;
+        mProductsData.clear();
         for(Product product : products) {
             mProductsData.add(product);
         }
@@ -124,7 +129,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public void goToAddProduct() {
         Intent intent = new Intent(this, AddProductActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent,1);
     }
 
     public void openMap() {
