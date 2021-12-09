@@ -9,12 +9,14 @@ import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -24,6 +26,8 @@ public class HomeActivity extends AppCompatActivity {
     private SharedPreferences mPreferences;
     private String sharedPrefFile =
             "com.kuliahdhevan.pasardesasambungrejo";
+    DatabaseHandler db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,20 +38,30 @@ public class HomeActivity extends AppCompatActivity {
         mAdapter = new ProductAdapter(this, mProductsData, findViewById(R.id.totalPrice));
         mRecyclerView.setAdapter(mAdapter);
         mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
+        DatabaseHandler db = new DatabaseHandler(this);
+        this.db = db;
+        this.fillInitialData();
         initializeData();
     }
 
-    private void initializeData() {
+    public void fillInitialData() {
         String[] foodsName = getResources().getStringArray(R.array.foods_name);
         String[] foodsDescription = getResources().getStringArray(R.array.foods_description);
         String[] foodsPrice = getResources().getStringArray(R.array.foods_price);
+        String[] foodsCode = getResources().getStringArray(R.array.foods_code);
         TypedArray foodImagesResources =
                 getResources().obtainTypedArray(R.array.foods_images);
-        mProductsData.clear();
         for(int i=0;i<foodsName.length;i++){
-            mProductsData.add(new Product(foodsName[i], foodsDescription[i], Integer.parseInt(foodsPrice[i]), foodImagesResources.getResourceId(i, 0)));
+            db.addProduct(new Product(foodsName[i], foodsDescription[i], Integer.parseInt(foodsPrice[i]), foodImagesResources.getResourceId(i, 0), foodsCode[i]));
         }
-        foodImagesResources.recycle();
+    }
+
+    private void initializeData() {
+        List<Product> products = db.getAllProduct();
+        int i=0;
+        for(Product product : products) {
+            mProductsData.add(product);
+        }
         mAdapter.notifyDataSetChanged();
     }
 
@@ -76,6 +90,8 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.updateUser:
                 this.goToUpdateUser();
                 return true;
+            case R.id.addProduct:
+                this.goToAddProduct();
 
             default:
                 return true;
@@ -103,6 +119,11 @@ public class HomeActivity extends AppCompatActivity {
 
     public void goToUpdateUser() {
         Intent intent = new Intent(this, UpdateUserActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToAddProduct() {
+        Intent intent = new Intent(this, AddProductActivity.class);
         startActivity(intent);
     }
 

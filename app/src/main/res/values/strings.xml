@@ -11,6 +11,16 @@
         <item>Ayam Serundeng</item>
     </string-array>
 
+    <string-array name="foods_code">
+        <item>A001</item>
+        <item>A002</item>
+        <item>A003</item>
+        <item>A004</item>
+        <item>A005</item>
+        <item>A006</item>
+        <item>A007</item>
+    </string-array>
+
     <string-array name="foods_description">
         <item>Ayam yang diungkep dengan kecap yang sudah dicampur dengan sambal pedas, memiliki perpaduan rasa daging ayam yang manis dan pedas</item>
         <item>Bukan sekedar ayam goreng biasa. Tambahan mentega membuat rasanya gurih-gurih enak bercampur dengan kecap yang manis. Harum bawang putih dan bombay membuatnya makin enak saat dimakan dengan nasi putih hangat siang ini.</item>
