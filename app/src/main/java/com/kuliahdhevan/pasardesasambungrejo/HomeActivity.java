@@ -49,6 +49,13 @@ public class HomeActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         this.initializeData();
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        this.initializeData();
+    }
+
     public void fillInitialData() {
         String[] foodsName = getResources().getStringArray(R.array.foods_name);
         String[] foodsDescription = getResources().getStringArray(R.array.foods_description);

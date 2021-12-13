@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION= 3;
+    private static final int DATABASE_VERSION= 4;
     private static final String DATABASE_NAME= "DHEVAN_STORE_DB";
     private static final String TABLE_PRODUCT = "Product";
 
@@ -23,11 +23,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // TODOAuto-generated method stub
         String query_table_product = "CREATE TABLE " + TABLE_PRODUCT +
                 "(" +
-                "name" + " TEXT PRIMARY KEY," + // Define a primary key
+                "name" + " TEXT," + // Define a primary key
                 "description" + " TEXT," +
                 "price" + " INT," +
                 "imageResource" + " INT," +
-                "code" + " TEXT" +
+                "code" + " TEXT PRIMARY KEY" +
                 ")";
         db.execSQL(query_table_product);
     }
@@ -97,12 +97,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return products;
     }
 
-    public void deleteProduct(Product product) {
+    public void deleteProduct(String code) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_PRODUCT, "code" + "='"+
-                product.code+"'",null);
+                code+"'",null);
         db.close();
-        System.out.println("Data terhapus "+product.code);
+        System.out.println("Data terhapus "+code);
     }
     public void updateMethod(String code, String name, Integer price, String description){
         SQLiteDatabase db = this.getWritableDatabase();

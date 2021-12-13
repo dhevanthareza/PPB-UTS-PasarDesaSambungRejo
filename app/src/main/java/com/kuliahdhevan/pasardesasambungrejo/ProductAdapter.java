@@ -65,9 +65,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 public void onClick(View v) {
                     Product currentFood = mFoodsData.get(getAdapterPosition());
                     Intent intent = new Intent(mContext, ProductDetailAActivity.class);
+                    intent.putExtra("productCode", currentFood.getCode());
                     intent.putExtra("productName", currentFood.getName());
                     intent.putExtra("productDescription", currentFood.getDescription());
                     intent.putExtra("productImage", currentFood.getImageResource());
+                    intent.putExtra("productPrice", currentFood.getPrice());
                     mContext.startActivity(intent);
                 }
             });

@@ -15,6 +15,7 @@ public class Product {
         this.code = code;
     }
 
+    public String getCode() { return code; }
     public String getName() { return name; }
     public int getPrice() { return price; }
     public int getImageResource() { return imageResource; }
